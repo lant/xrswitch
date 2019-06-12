@@ -22,6 +22,8 @@ func main() {
 	fmt.Println("4) Parents")
 	fmt.Println("---------------------------")
 
+  var optionsSize = len(commands)
+
 	var selected int
 	fmt.Print("Select Option > ")
 	_, inputError := fmt.Scanf("%d", &selected)
@@ -30,18 +32,12 @@ func main() {
 		os.Exit(-1)
 	}
 
-	switch selected {
-	case 1:
-		execRandr(commands[1])
-	case 2:
-		execRandr(commands[2])
-	case 3:
-		execRandr(commands[3])
-	case 4:
-		execRandr(commands[4])
-	default:
+  if selected > optionsSize || selected <= 0 {
 		fmt.Println("Invalid option")
-	}
+		os.Exit(-1)
+  }
+
+  execRandr(commands[selected])
 }
 
 func execRandr(randr []string) {
