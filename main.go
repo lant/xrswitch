@@ -38,6 +38,7 @@ func main() {
   }
 
   execRandr(commands[selected])
+  execWallpaper()
 }
 
 func execRandr(randr []string) {
@@ -45,5 +46,13 @@ func execRandr(randr []string) {
 	err := command.Run()
 	if err != nil {
 		fmt.Printf("xrandr failed with: %v",err)
+	}
+}
+
+func execWallpaper() {
+  command := exec.Command("nitrogen", "--set-scaled", "/home/marc/wallpapers/amps.jpg")
+	err := command.Run()
+	if err != nil {
+		fmt.Printf("Could not set the wallpaper: %v",err)
 	}
 }
